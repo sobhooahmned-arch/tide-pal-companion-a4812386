@@ -85,13 +85,13 @@ export function LiveWithdrawals() {
     }, 1000);
 
     const schedule = () => {
-      timer.current = window.setTimeout(
-        () => {
-          setItems((prev) => [makeItem(1), ...prev].slice(0, 8));
-          schedule();
-        },
-        5000 + Math.random() * 7000,
-      );
+      timer.current = window.setTimeout(() => {
+        setItems((prev) => [
+          makeItem(1, prev.map((p) => p.name)),
+          ...prev,
+        ].slice(0, 8));
+        schedule();
+      }, 30_000);
     };
     schedule();
 
