@@ -137,7 +137,9 @@ export function LiveWithdrawals() {
               <p className="text-sm font-black text-primary tabular-nums">
                 {money(it.amount)} ج.م
               </p>
-              <p className="text-[11px] text-muted-foreground">تم التنفيذ</p>
+              <p className="text-[11px] text-muted-foreground">
+                {it.amount < 15000 ? "تسليم باقات الاستثمار الصغيرة" : "باقات الاستثمار الضخمة"}
+              </p>
             </div>
           </li>
         ))}
