@@ -40,6 +40,8 @@ function pick<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)]!;
 }
 
+const money = (n: number) => n.toLocaleString("en-US");
+
 function maskPhone() {
   const prefix = pick(["010", "011", "012", "015"]);
   const tail = String(Math.floor(Math.random() * 100)).padStart(2, "0");
@@ -113,7 +115,7 @@ export function LiveWithdrawals() {
           عمليات سحب جارية الآن
         </h2>
         <span className="text-xs text-muted-foreground">
-          {fmt(total)} ج.م آخر العمليات
+          {money(total)} ج.م آخر العمليات
         </span>
       </div>
 
@@ -138,7 +140,7 @@ export function LiveWithdrawals() {
             </div>
             <div className="text-left">
               <p className="text-sm font-black text-primary tabular-nums">
-                {fmt(it.amount)} ج.م
+                {money(it.amount)} ج.م
               </p>
               <p className="text-[11px] text-muted-foreground">تم التنفيذ</p>
             </div>
