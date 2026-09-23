@@ -1,5 +1,7 @@
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useCallback, useEffect, useState } from "react";
+import { AdminStats } from "@/components/AdminStats";
+import { getSubscriptions, type Subscription } from "@/lib/subscription";
 import { clearStoredUser, getStoredUser } from "@/lib/auth";
 import { fmt } from "@/lib/market";
 import { pushNotification } from "@/lib/notify";
@@ -38,11 +40,13 @@ function AdminPage() {
   const [ready, setReady] = useState(false);
   const [accounts, setAccounts] = useState<Account[]>([]);
   const [requests, setRequests] = useState<MoneyRequest[]>([]);
+  const [subscriptions, setSubscriptions] = useState<Subscription[]>([]);
   const [notice, setNotice] = useState<string | null>(null);
 
   const refresh = useCallback(() => {
     setAccounts(getAccounts());
     setRequests(getRequests());
+    setSubscriptions(getSubscriptions());
   }, []);
 
   useEffect(() => {
