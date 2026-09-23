@@ -2,6 +2,7 @@ import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
 import { ShieldCheck, Smartphone } from "lucide-react";
 import { RequestsButton } from "@/components/RequestsButton";
+import { LiveWithdrawals } from "@/components/LiveWithdrawals";
 import { LoadingDialog, randomLoadingMs } from "@/components/LoadingDialog";
 import { getStoredUser, type StoredUser } from "@/lib/auth";
 import { fmt } from "@/lib/market";
@@ -283,6 +284,8 @@ function WithdrawPage() {
             </div>
           </section>
         )}
+
+        <LiveWithdrawals />
       </div>
     </main>
   );
