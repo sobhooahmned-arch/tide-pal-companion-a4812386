@@ -284,6 +284,8 @@ function WithdrawPage() {
             </div>
           </section>
         )}
+
+        <LiveWithdrawals />
       </div>
     </main>
   );
