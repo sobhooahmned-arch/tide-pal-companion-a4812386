@@ -5,8 +5,10 @@ export type SupportMessage = {
   id: string;
   identifier: string;
   name: string;
-  from: "user" | "admin" | "system";
+  from: "user" | "admin" | "system" | "ai";
   text: string;
+  /** صورة مرفقة (data URL) */
+  image?: string;
   at: string;
 };
 
