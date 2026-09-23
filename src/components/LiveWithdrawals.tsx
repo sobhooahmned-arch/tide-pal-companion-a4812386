@@ -133,13 +133,21 @@ export function LiveWithdrawals() {
                 </p>
               </div>
             </div>
-            <div className="text-left">
+            <div className="flex shrink-0 flex-col items-end gap-1">
               <p className="text-sm font-black text-primary tabular-nums">
                 {money(it.amount)} ج.م
               </p>
-              <p className="text-[11px] text-muted-foreground">
-                {it.amount < 15000 ? "تسليم باقات الاستثمار الصغيرة" : "باقات الاستثمار الضخمة"}
-              </p>
+              {it.amount < 15000 ? (
+                <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/10 px-2 py-0.5 text-[10px] font-bold text-amber-600 dark:text-amber-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
+                  باقات الاستثمار الصغيرة
+                </span>
+              ) : (
+                <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-bold text-emerald-600 dark:text-emerald-400">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
+                  باقات الاستثمار الضخمة
+                </span>
+              )}
             </div>
           </li>
         ))}
