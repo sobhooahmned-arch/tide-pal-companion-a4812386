@@ -72,11 +72,11 @@ export function LiveWithdrawals() {
   const timer = useRef<number | null>(null);
 
   useEffect(() => {
-    let t = 8;
+    let t = 30;
     const seed: Item[] = [];
     for (let i = 0; i < 6; i++) {
-      seed.push(makeItem(t));
-      t += 20 + Math.floor(Math.random() * 90);
+      seed.push(makeItem(t, seed.map((s) => s.name)));
+      t += 30 + Math.floor(Math.random() * 60);
     }
     setItems(seed);
 
