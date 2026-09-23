@@ -102,8 +102,6 @@ export function LiveWithdrawals() {
     };
   }, []);
 
-  const total = items.reduce((s, i) => s + i.amount, 0);
-
   return (
     <section className="mt-5 rounded-2xl border border-border bg-card p-5">
       <div className="flex items-center justify-between">
@@ -114,9 +112,6 @@ export function LiveWithdrawals() {
           </span>
           عمليات سحب جارية الآن
         </h2>
-        <span className="text-xs text-muted-foreground">
-          {money(total)} ج.م آخر العمليات
-        </span>
       </div>
 
       <ul className="mt-4 space-y-2">
