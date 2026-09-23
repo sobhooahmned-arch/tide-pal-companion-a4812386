@@ -48,6 +48,11 @@ function norm(v: string) {
   return v.trim().toLowerCase();
 }
 
+/** كل الاشتراكات المسجلة (للوحة الإدارة) */
+export function getSubscriptions(): Subscription[] {
+  return read();
+}
+
 export function getSubscription(identifier: string): Subscription | null {
   const id = norm(identifier);
   return read().find((s) => norm(s.identifier) === id) ?? null;
