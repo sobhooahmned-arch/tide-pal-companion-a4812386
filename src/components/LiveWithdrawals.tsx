@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
-import { fmt } from "@/lib/market";
 
 const NAMES = [
   "أحمد محمد",
@@ -26,7 +25,7 @@ const NAMES = [
 ];
 
 const METHODS = ["اتصالات كاش", "أورانج كاش", "وي كاش", "انستا باي"];
-const AMOUNTS = [4000, 4500, 5000, 6000, 7500, 8000, 9000, 10000, 12500, 15000, 20000, 25000];
+const AMOUNTS = [10000, 11000, 12500, 13000, 14000, 15000, 17000, 18000, 20000, 22000, 25000, 30000];
 
 type Item = {
   id: string;
