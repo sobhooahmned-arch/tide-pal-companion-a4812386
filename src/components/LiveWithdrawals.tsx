@@ -1,6 +1,5 @@
 import { useEffect, useRef, useState } from "react";
 import { CheckCircle2 } from "lucide-react";
-import { fmt } from "@/lib/market";
 
 const NAMES = [
   "أحمد محمد",
@@ -26,7 +25,7 @@ const NAMES = [
 ];
 
 const METHODS = ["اتصالات كاش", "أورانج كاش", "وي كاش", "انستا باي"];
-const AMOUNTS = [4000, 4500, 5000, 6000, 7500, 8000, 9000, 10000, 12500, 15000, 20000, 25000];
+const AMOUNTS = [10000, 11000, 12500, 13000, 14000, 15000, 17000, 18000, 20000, 22000, 25000, 30000];
 
 type Item = {
   id: string;
@@ -40,6 +39,8 @@ type Item = {
 function pick<T>(arr: T[]): T {
   return arr[Math.floor(Math.random() * arr.length)]!;
 }
+
+const money = (n: number) => n.toLocaleString("en-US");
 
 function maskPhone() {
   const prefix = pick(["010", "011", "012", "015"]);
@@ -114,7 +115,7 @@ export function LiveWithdrawals() {
           عمليات سحب جارية الآن
         </h2>
         <span className="text-xs text-muted-foreground">
-          {fmt(total)} ج.م آخر العمليات
+          {money(total)} ج.م آخر العمليات
         </span>
       </div>
 
@@ -139,7 +140,7 @@ export function LiveWithdrawals() {
             </div>
             <div className="text-left">
               <p className="text-sm font-black text-primary tabular-nums">
-                {fmt(it.amount)} ج.م
+                {money(it.amount)} ج.م
               </p>
               <p className="text-[11px] text-muted-foreground">تم التنفيذ</p>
             </div>
