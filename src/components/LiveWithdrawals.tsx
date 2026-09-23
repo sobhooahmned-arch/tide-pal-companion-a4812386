@@ -47,10 +47,11 @@ function maskPhone() {
   return `${prefix}****${tail}`;
 }
 
-function makeItem(secondsAgo: number): Item {
+function makeItem(secondsAgo: number, excludeNames: string[]): Item {
+  const available = NAMES.filter((n) => !excludeNames.includes(n));
   return {
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    name: pick(NAMES),
+    name: pick(available.length ? available : NAMES),
     method: pick(METHODS),
     amount: pick(AMOUNTS),
     phone: maskPhone(),
