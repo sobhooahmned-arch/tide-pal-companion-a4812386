@@ -129,7 +129,11 @@ function AdminPage() {
           </p>
         )}
 
-        <PaySettingsCard onSaved={() => flash("تم حفظ بيانات التحويل.")} />
+        <AdminStats accounts={accounts} requests={requests} subscriptions={subscriptions} />
+
+        <div className="mt-8">
+          <PaySettingsCard onSaved={() => flash("تم حفظ بيانات التحويل.")} />
+        </div>
 
         <SupportSection onReplied={() => flash("تم إرسال الرد للمستخدم.")} />
 
