@@ -26,7 +26,7 @@ const NAMES = [
 ];
 
 const METHODS = ["اتصالات كاش", "أورانج كاش", "وي كاش", "انستا باي"];
-const AMOUNTS = [250, 400, 500, 750, 900, 1000, 1250, 1500, 2000, 2500, 3000, 4000, 5000, 7500];
+const AMOUNTS = [4000, 4500, 5000, 6000, 7500, 8000, 9000, 10000, 12500, 15000, 20000, 25000];
 
 type Item = {
   id: string;
@@ -47,10 +47,11 @@ function maskPhone() {
   return `${prefix}****${tail}`;
 }
 
-function makeItem(secondsAgo: number): Item {
+function makeItem(secondsAgo: number, excludeNames: string[]): Item {
+  const available = NAMES.filter((n) => !excludeNames.includes(n));
   return {
     id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
-    name: pick(NAMES),
+    name: pick(available.length ? available : NAMES),
     method: pick(METHODS),
     amount: pick(AMOUNTS),
     phone: maskPhone(),
@@ -71,11 +72,11 @@ export function LiveWithdrawals() {
   const timer = useRef<number | null>(null);
 
   useEffect(() => {
-    let t = 8;
+    let t = 30;
     const seed: Item[] = [];
     for (let i = 0; i < 6; i++) {
-      seed.push(makeItem(t));
-      t += 20 + Math.floor(Math.random() * 90);
+      seed.push(makeItem(t, seed.map((s) => s.name)));
+      t += 30 + Math.floor(Math.random() * 60);
     }
     setItems(seed);
 
@@ -84,13 +85,13 @@ export function LiveWithdrawals() {
     }, 1000);
 
     const schedule = () => {
-      timer.current = window.setTimeout(
-        () => {
-          setItems((prev) => [makeItem(1), ...prev].slice(0, 8));
-          schedule();
-        },
-        5000 + Math.random() * 7000,
-      );
+      timer.current = window.setTimeout(() => {
+        setItems((prev) => [
+          makeItem(1, prev.map((p) => p.name)),
+          ...prev,
+        ].slice(0, 8));
+        schedule();
+      }, 30_000);
     };
     schedule();
 
